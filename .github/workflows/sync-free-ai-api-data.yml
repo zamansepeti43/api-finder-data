@@ -23,6 +23,7 @@ jobs:
           node <<'NODE'
           const fs = require('fs');
           const https = require('https');
+          const crypto = require('crypto');
 
           const source = process.env.SOURCE_URL;
           https.get(source, { headers: { 'User-Agent': 'AGT-Studioco-API-Finder-Sync/1.0' } }, res => {
@@ -65,7 +66,8 @@ jobs:
                 }).filter(p => p.provider);
 
                 if (!providers.length) throw new Error('No providers returned by upstream source');
-                const out = {
+
+                const data = {
                   product: 'AGT Studio — API Finder Pro',
                   edition: 'Premium',
                   snapshotDate: src.lastUpdated || new Date().toISOString().slice(0,10),
@@ -75,16 +77,29 @@ jobs:
                   sourceUrl: 'https://github.com/mnfst/awesome-free-llm-apis',
                   providers
                 };
-                fs.writeFileSync('data.json', JSON.stringify(out, null, 2) + '\n');
+                const nextData = JSON.stringify(data, null, 2) + '\n';
+                const oldData = fs.existsSync('data.json') ? fs.readFileSync('data.json', 'utf8') : '';
+
+                if (oldData === nextData) {
+                  console.log('No upstream data change. Nothing to publish.');
+                  process.exit(0);
+                }
+
+                const today = new Date().toISOString().slice(0,10).replaceAll('-','.');
+                const dataHash = crypto.createHash('sha256').update(nextData).digest('hex').slice(0,8);
+                const version = `${today}-${dataHash}`;
+
+                fs.writeFileSync('data.json', nextData);
                 fs.writeFileSync('update-manifest.json', JSON.stringify({
                   appVersion: '1.0.0',
-                  dataVersion: String(src.lastUpdated || new Date().toISOString().slice(0,10)),
+                  dataVersion: version,
                   updatedAt: new Date().toISOString(),
                   dataUrl: 'https://raw.githubusercontent.com/zamansepeti43/api-finder-data/main/data.json',
                   source: 'mnfst/awesome-free-llm-apis',
                   sourceUrl: 'https://github.com/mnfst/awesome-free-llm-apis',
                   changelog: `Automatic provider-data sync. Upstream lastUpdated: ${src.lastUpdated || 'unknown'}. Provider count: ${providers.length}.`
                 }, null, 2) + '\n');
+                console.log(`Published data version ${version}`);
               } catch (e) {
                 console.error(e);
                 process.exit(1);
