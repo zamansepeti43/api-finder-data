@@ -1,0 +1,106 @@
+name: Sync Free AI API Data
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '15 4 * * *'
+      timezone: 'Europe/Istanbul'
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout data repository
+        uses: actions/checkout@v4
+
+      - name: Fetch and normalize upstream data
+        env:
+          SOURCE_URL: https://raw.githubusercontent.com/mnfst/awesome-free-llm-apis/main/data.json
+        run: |
+          node <<'NODE'
+          const fs = require('fs');
+          const https = require('https');
+
+          const source = process.env.SOURCE_URL;
+          https.get(source, { headers: { 'User-Agent': 'AGT-Studioco-API-Finder-Sync/1.0' } }, res => {
+            if (res.statusCode < 200 || res.statusCode >= 300) {
+              console.error(`Upstream HTTP ${res.statusCode}`);
+              process.exit(1);
+            }
+            let body = '';
+            res.on('data', c => body += c);
+            res.on('end', () => {
+              try {
+                const src = JSON.parse(body);
+                const providers = (src.providers || []).map(p => {
+                  const description = String(p.description || '').trim();
+                  const models = (p.models || []).map(m => m && m.name).filter(Boolean);
+                  const modality = [...new Set((p.models || []).map(m => m && m.modality).filter(Boolean))].join(', ');
+                  const category = /trial|credit|credits|signup.*credit/i.test(description) ? 'Trial Credits' : 'Free Provider';
+                  const compatible = /not.*openai|not.*compatible|ollama api/i.test(description) ? 'Varies' : 'Yes';
+                  const verification = /no credit card|required.*card|without.*card/i.test(description) ? 'No card stated' : 'Account/API key';
+                  const privacy = /train|training|data.*improv|prompt.*log|log.*prompt/i.test(description) ? description : 'Check current provider terms';
+                  const bestFor = modality ? `${modality} AI access` : 'AI API access';
+                  const whatItDoes = description.split('. ')[0] || `Access ${p.name || 'AI'} models through an API.`;
+                  const useCases = modality ? `AI applications, ${modality.toLowerCase()} workloads` : 'AI applications, prototyping, automation';
+                  return {
+                    provider: p.name,
+                    category,
+                    summary: description || 'Provider data available in the upstream directory.',
+                    compatible,
+                    verification,
+                    privacy,
+                    bestFor,
+                    official: p.url || '',
+                    docs: p.baseUrl || p.url || '',
+                    models: models.slice(0, 20).join('; ') || 'Various models',
+                    whatItDoes,
+                    useCases,
+                    whatItDoesTr: whatItDoes,
+                    useCasesTr: useCases
+                  };
+                }).filter(p => p.provider);
+
+                if (!providers.length) throw new Error('No providers returned by upstream source');
+                const out = {
+                  product: 'AGT Studio — API Finder Pro',
+                  edition: 'Premium',
+                  snapshotDate: src.lastUpdated || new Date().toISOString().slice(0,10),
+                  updatesIncluded: true,
+                  providerCount: providers.length,
+                  source: 'mnfst/awesome-free-llm-apis',
+                  sourceUrl: 'https://github.com/mnfst/awesome-free-llm-apis',
+                  providers
+                };
+                fs.writeFileSync('data.json', JSON.stringify(out, null, 2) + '\n');
+                fs.writeFileSync('update-manifest.json', JSON.stringify({
+                  appVersion: '1.0.0',
+                  dataVersion: String(src.lastUpdated || new Date().toISOString().slice(0,10)),
+                  updatedAt: new Date().toISOString(),
+                  dataUrl: 'https://raw.githubusercontent.com/zamansepeti43/api-finder-data/main/data.json',
+                  source: 'mnfst/awesome-free-llm-apis',
+                  sourceUrl: 'https://github.com/mnfst/awesome-free-llm-apis',
+                  changelog: `Automatic provider-data sync. Upstream lastUpdated: ${src.lastUpdated || 'unknown'}. Provider count: ${providers.length}.`
+                }, null, 2) + '\n');
+              } catch (e) {
+                console.error(e);
+                process.exit(1);
+              }
+            });
+          }).on('error', e => { console.error(e); process.exit(1); });
+          NODE
+
+      - name: Commit only when data changed
+        run: |
+          git config user.name 'AGT Studioco Bot'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add data.json update-manifest.json
+          if git diff --cached --quiet; then
+            echo 'No data changes detected.'
+            exit 0
+          fi
+          git commit -m "chore: automatic API data update"
+          git push
