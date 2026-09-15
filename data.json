@@ -1,0 +1,243 @@
+{
+  "product": "AGT Studio — Free AI API Finder Premium",
+  "edition": "Premium",
+  "snapshotDate": "2026-09-14",
+  "updatesIncluded": true,
+  "providerCount": 26,
+  "providers": [
+    {
+      "provider": "OpenRouter",
+      "category": "Free Provider",
+      "summary": "20 req/min; 50 req/day; up to 1,000 req/day after $10 lifetime top-up",
+      "compatible": "Yes",
+      "verification": "No card stated",
+      "privacy": "No data-training note stated",
+      "bestFor": "Multi-provider gateway"
+    },
+    {
+      "provider": "Google AI Studio",
+      "category": "Free Provider",
+      "summary": "Gemini API free tier with model-specific limits",
+      "compatible": "Yes",
+      "verification": "Google account",
+      "privacy": "Check current Google AI terms",
+      "bestFor": "Gemini development"
+    },
+    {
+      "provider": "NVIDIA NIM",
+      "category": "Trial Credits",
+      "summary": "Hosted inference APIs with model-dependent trial access",
+      "compatible": "Yes",
+      "verification": "NVIDIA account",
+      "privacy": "Check current NVIDIA terms",
+      "bestFor": "NVIDIA-hosted models"
+    },
+    {
+      "provider": "Mistral (La Plateforme)",
+      "category": "Free Provider",
+      "summary": "Free-tier access may be available for selected Mistral models",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Mistral terms",
+      "bestFor": "Mistral models"
+    },
+    {
+      "provider": "Mistral (Codestral)",
+      "category": "Free Provider",
+      "summary": "Codestral coding model access with current plan limits",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Mistral terms",
+      "bestFor": "Code generation"
+    },
+    {
+      "provider": "Hugging Face Inference Providers",
+      "category": "Free Provider",
+      "summary": "Inference access through multiple model providers; free credits/limits vary",
+      "compatible": "Yes",
+      "verification": "Hugging Face account/token",
+      "privacy": "Provider-specific",
+      "bestFor": "Model experimentation"
+    },
+    {
+      "provider": "Vercel AI Gateway",
+      "category": "Free Provider",
+      "summary": "Unified gateway for multiple AI providers with current plan-dependent usage",
+      "compatible": "Yes",
+      "verification": "Vercel account",
+      "privacy": "Check current Vercel terms",
+      "bestFor": "AI gateway integration"
+    },
+    {
+      "provider": "OpenCode Zen",
+      "category": "Free Provider",
+      "summary": "Coding-focused model access with current availability and limits",
+      "compatible": "Yes",
+      "verification": "Account may be required",
+      "privacy": "Check current provider terms",
+      "bestFor": "Coding agents"
+    },
+    {
+      "provider": "Cerebras",
+      "category": "Free Provider",
+      "summary": "Fast inference with free developer access subject to rate limits",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Cerebras terms",
+      "bestFor": "High-speed inference"
+    },
+    {
+      "provider": "Groq",
+      "category": "Free Provider",
+      "summary": "Fast inference API with model and rate-limit dependent free access",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Groq terms",
+      "bestFor": "Fast inference"
+    },
+    {
+      "provider": "Cohere",
+      "category": "Trial Credits",
+      "summary": "Developer API with trial/limited usage depending on current account tier",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Cohere terms",
+      "bestFor": "Text and retrieval"
+    },
+    {
+      "provider": "GitHub Models",
+      "category": "Free Provider",
+      "summary": "Model playground/API access with usage limits tied to GitHub account and current preview policies",
+      "compatible": "Yes",
+      "verification": "GitHub account",
+      "privacy": "Check current GitHub terms",
+      "bestFor": "Developer experimentation"
+    },
+    {
+      "provider": "Cloudflare Workers AI",
+      "category": "Free Provider",
+      "summary": "Serverless AI inference with current Workers AI allowance and plan limits",
+      "compatible": "Yes",
+      "verification": "Cloudflare account",
+      "privacy": "Check current Cloudflare terms",
+      "bestFor": "Edge AI"
+    },
+    {
+      "provider": "Fireworks",
+      "category": "Trial Credits",
+      "summary": "Hosted open-model inference with current promotional/trial credits varying by account",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Fireworks terms",
+      "bestFor": "Open-model inference"
+    },
+    {
+      "provider": "Baseten",
+      "category": "Trial Credits",
+      "summary": "Model serving and inference platform with current trial/credit availability",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Baseten terms",
+      "bestFor": "Production model serving"
+    },
+    {
+      "provider": "Nebius",
+      "category": "Trial Credits",
+      "summary": "AI inference APIs with current credits and model availability",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Nebius terms",
+      "bestFor": "Hosted open models"
+    },
+    {
+      "provider": "Novita",
+      "category": "Trial Credits",
+      "summary": "AI model APIs with current free/trial credit policies",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Novita terms",
+      "bestFor": "Image and language models"
+    },
+    {
+      "provider": "AI21",
+      "category": "Trial Credits",
+      "summary": "Jamba and other model APIs with account-dependent trial access",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current AI21 terms",
+      "bestFor": "Long-context text"
+    },
+    {
+      "provider": "Upstage",
+      "category": "Trial Credits",
+      "summary": "Solar and document AI APIs with current developer access policies",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Upstage terms",
+      "bestFor": "Korean and document AI"
+    },
+    {
+      "provider": "NLP Cloud",
+      "category": "Trial Credits",
+      "summary": "Hosted NLP APIs with current trial availability and limits",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current NLP Cloud terms",
+      "bestFor": "NLP utilities"
+    },
+    {
+      "provider": "Alibaba Cloud Model Studio",
+      "category": "Trial Credits",
+      "summary": "Qwen and other model APIs with current free quota/trial policies",
+      "compatible": "Yes",
+      "verification": "Alibaba Cloud account",
+      "privacy": "Check current Alibaba Cloud terms",
+      "bestFor": "Qwen models"
+    },
+    {
+      "provider": "Modal",
+      "category": "Trial Credits",
+      "summary": "Serverless GPU infrastructure suitable for deploying inference workloads",
+      "compatible": "Custom",
+      "verification": "Account",
+      "privacy": "Check current Modal terms",
+      "bestFor": "Custom inference deployments"
+    },
+    {
+      "provider": "Inference.net",
+      "category": "Trial Credits",
+      "summary": "Inference infrastructure/API access with current account and credit policies",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current provider terms",
+      "bestFor": "Inference workloads"
+    },
+    {
+      "provider": "Hyperbolic",
+      "category": "Free Provider",
+      "summary": "Open-model inference with current free/trial availability",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current Hyperbolic terms",
+      "bestFor": "Open-model access"
+    },
+    {
+      "provider": "SambaNova Cloud",
+      "category": "Free Provider",
+      "summary": "Fast inference APIs with current free developer access and rate limits",
+      "compatible": "Yes",
+      "verification": "Account/API key",
+      "privacy": "Check current SambaNova terms",
+      "bestFor": "Fast inference"
+    },
+    {
+      "provider": "Scaleway Generative APIs",
+      "category": "Trial Credits",
+      "summary": "Generative AI APIs with current credits and model-dependent limits",
+      "compatible": "Yes",
+      "verification": "Scaleway account",
+      "privacy": "Check current Scaleway terms",
+      "bestFor": "European cloud AI"
+    }
+  ]
+}
