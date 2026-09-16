@@ -1,9 +1,9 @@
 {
   "appVersion": "1.0.0",
-  "dataVersion": "2026.09.16",
-  "updatedAt": "2026-09-16T03:30:00+03:00",
+  "dataVersion": "2026.09.16-a788c712",
+  "updatedAt": "2026-09-16T06:02:51.851Z",
   "dataUrl": "https://raw.githubusercontent.com/zamansepeti43/api-finder-data/main/data.json",
   "source": "mnfst/awesome-free-llm-apis",
   "sourceUrl": "https://github.com/mnfst/awesome-free-llm-apis",
-  "changelog": "Production Premium live-data release. Automatic update connection verified successfully."
+  "changelog": "Automatic provider-data sync. Upstream lastUpdated: 2026-08-21. Provider count: 16."
 }
