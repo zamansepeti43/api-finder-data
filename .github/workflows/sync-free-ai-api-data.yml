@@ -79,13 +79,15 @@ jobs:
                 };
                 const nextData = JSON.stringify(data, null, 2) + '\n';
                 const oldData = fs.existsSync('data.json') ? fs.readFileSync('data.json', 'utf8') : '';
+                const checkedAt = new Date().toISOString();
 
                 if (oldData === nextData) {
-                  console.log('No upstream data change. Nothing to publish.');
+                  fs.writeFileSync('sync-status.json', JSON.stringify({checkedAt, status:'unchanged', providerCount:providers.length, upstreamLastUpdated:src.lastUpdated || null}, null, 2) + '\n');
+                  console.log('No upstream data change. Updated heartbeat status only.');
                   process.exit(0);
                 }
 
-                const today = new Date().toISOString().slice(0,10).replaceAll('-','.');
+                const today = checkedAt.slice(0,10).replaceAll('-','.');
                 const dataHash = crypto.createHash('sha256').update(nextData).digest('hex').slice(0,8);
                 const version = `${today}-${dataHash}`;
 
@@ -93,12 +95,13 @@ jobs:
                 fs.writeFileSync('update-manifest.json', JSON.stringify({
                   appVersion: '1.0.0',
                   dataVersion: version,
-                  updatedAt: new Date().toISOString(),
+                  updatedAt: checkedAt,
                   dataUrl: 'https://raw.githubusercontent.com/zamansepeti43/api-finder-data/main/data.json',
                   source: 'mnfst/awesome-free-llm-apis',
                   sourceUrl: 'https://github.com/mnfst/awesome-free-llm-apis',
                   changelog: `Automatic provider-data sync. Upstream lastUpdated: ${src.lastUpdated || 'unknown'}. Provider count: ${providers.length}.`
                 }, null, 2) + '\n');
+                fs.writeFileSync('sync-status.json', JSON.stringify({checkedAt, status:'updated', providerCount:providers.length, upstreamLastUpdated:src.lastUpdated || null, dataVersion:version}, null, 2) + '\n');
                 console.log(`Published data version ${version}`);
               } catch (e) {
                 console.error(e);
@@ -108,14 +111,14 @@ jobs:
           }).on('error', e => { console.error(e); process.exit(1); });
           NODE
 
-      - name: Commit only when data changed
+      - name: Commit sync results
         run: |
           git config user.name 'AGT Studioco Bot'
           git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
-          git add data.json update-manifest.json
+          git add data.json update-manifest.json sync-status.json
           if git diff --cached --quiet; then
-            echo 'No data changes detected.'
+            echo 'Nothing changed.'
             exit 0
           fi
-          git commit -m "chore: automatic API data update"
+          git commit -m "chore: automatic API data sync"
           git push
