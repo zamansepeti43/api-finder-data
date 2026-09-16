@@ -1,7 +1,9 @@
 {
   "appVersion": "1.0.0",
-  "dataVersion": "2026.09.15",
-  "updatedAt": "2026-09-15",
+  "dataVersion": "2026.09.16-test",
+  "updatedAt": "2026-09-16T00:15:00+03:00",
   "dataUrl": "https://raw.githubusercontent.com/zamansepeti43/api-finder-data/main/data.json",
-  "changelog": "Initial Premium live data release for AGT Studio Free AI API Finder."
+  "source": "mnfst/awesome-free-llm-apis",
+  "sourceUrl": "https://github.com/mnfst/awesome-free-llm-apis",
+  "changelog": "Live update connection test. No provider-data change; test version only."
 }
