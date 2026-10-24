@@ -1,9 +1,9 @@
 {
   "product": "AGT Studio — API Finder Pro",
   "edition": "Premium",
-  "snapshotDate": "2026-10-05",
+  "snapshotDate": "2026-10-23",
   "updatesIncluded": true,
-  "providerCount": 16,
+  "providerCount": 17,
   "source": "mnfst/awesome-free-llm-apis",
   "sourceUrl": "https://github.com/mnfst/awesome-free-llm-apis",
   "providers": [
@@ -104,20 +104,36 @@
       "useCasesTr": "AI applications, text, multimodal, text + vision, text (reasoning), text, image, audio, embeddings workloads"
     },
     {
+      "provider": "Gonka Broker",
+      "category": "Trial Credits",
+      "summary": "Permanent free tier, no credit card required; phone verification required. ~1M tokens/month (shared, varies by model), resets monthly. Model lineup rotates with network governance — live list at /v1/models.",
+      "compatible": "Yes",
+      "verification": "No card stated",
+      "privacy": "Check current provider terms",
+      "bestFor": "Text (reasoning), Embeddings AI access",
+      "official": "https://app.gonkabroker.com/signup",
+      "docs": "https://proxy.gonkabroker.com/v1",
+      "models": "MiniMaxAI/MiniMax-M2.7; deepseek-ai/DeepSeek-V4-Flash-0731; zai-org/GLM-5.3-Flash; BAAI/bge-m3",
+      "whatItDoes": "Permanent free tier, no credit card required; phone verification required",
+      "useCases": "AI applications, text (reasoning), embeddings workloads",
+      "whatItDoesTr": "Permanent free tier, no credit card required; phone verification required",
+      "useCasesTr": "AI applications, text (reasoning), embeddings workloads"
+    },
+    {
       "provider": "Groq",
       "category": "Trial Credits",
       "summary": "Free tier, no credit card. Ultra-fast LPU inference.",
       "compatible": "Yes",
       "verification": "No card stated",
       "privacy": "Check current provider terms",
-      "bestFor": "Text AI access",
+      "bestFor": "Text, Text + Image AI access",
       "official": "https://console.groq.com/keys",
       "docs": "https://api.groq.com/openai/v1",
       "models": "openai/gpt-oss-120b; openai/gpt-oss-20b; qwen/qwen3.8-27b",
       "whatItDoes": "Free tier, no credit card",
-      "useCases": "AI applications, text workloads",
+      "useCases": "AI applications, text, text + image workloads",
       "whatItDoesTr": "Free tier, no credit card",
-      "useCasesTr": "AI applications, text workloads"
+      "useCasesTr": "AI applications, text, text + image workloads"
     },
     {
       "provider": "Hugging Face",
@@ -142,14 +158,14 @@
       "compatible": "Yes",
       "verification": "No card stated",
       "privacy": "Check current provider terms",
-      "bestFor": "Text, Text + Vision, Multimodal, Text (code) AI access",
+      "bestFor": "Text, Multimodal, Text (code), Text + Vision AI access",
       "official": "https://app.kilo.ai/profile",
       "docs": "https://api.kilo.ai/api/gateway",
-      "models": "nvidia/nemotron-3-ultra-550b-a55b:free; stepfun/step-3.7-flash:free; nvidia/nemotron-3-super-120b-a12b:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free; poolside/laguna-s-2.1:free; poolside/laguna-xs-2.1:free; cohere/north-mini-code:free; openrouter/free; tencent/hy3:free; nvidia/nemotron-3.5-lightning:free; liquid/lfm-2.5-2.6b:free; kilo-auto/free; inclusionai/ling-3.1-flash; inclusionai/ling-3.0-flash-sante:free; apodex/apodex-1.1-mini:free; qwen/qwen3.8-27b:free; dots-studio/dots-3-note-preview:free",
+      "models": "nvidia/nemotron-3-ultra-550b-a55b:free; nvidia/nemotron-3-super-120b-a12b:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free; poolside/laguna-s-2.1:free; poolside/laguna-xs-2.1:free; cohere/north-mini-code:free; openrouter/free; tencent/hy3:free; nvidia/nemotron-3.5-lightning:free; liquid/lfm-2.5-2.6b:free; kilo-auto/free; inclusionai/ling-3.1-flash; apodex/apodex-1.1-mini:free; dots-studio/dots-3-note-preview:free; recursive/flint-v1.0:free; xingchen-agi/xing4.0-29b-a4b:free; nvidia/nemotron-3.5-super-vl:free; reflection/beam-free",
       "whatItDoes": "Free models with no credit card and no API key required",
-      "useCases": "AI applications, text, text + vision, multimodal, text (code) workloads",
+      "useCases": "AI applications, text, multimodal, text (code), text + vision workloads",
       "whatItDoesTr": "Free models with no credit card and no API key required",
-      "useCasesTr": "AI applications, text, text + vision, multimodal, text (code) workloads"
+      "useCasesTr": "AI applications, text, multimodal, text (code), text + vision workloads"
     },
     {
       "provider": "LLM7.io",
@@ -161,7 +177,7 @@
       "bestFor": "Text, Text (reasoning) AI access",
       "official": "https://token.llm7.io",
       "docs": "https://api.llm7.io/v1",
-      "models": "gpt-oss:20b; mistral-Nemo-Instruct-2407; minimax-m2.7; DeepSeek-V4-Flash-0731",
+      "models": "gpt-oss:20b; mistral-Nemo-Instruct-2407; minimax-m2.7; nemotron-3-nano:30b; codestral-latest",
       "whatItDoes": "API gateway with a free tier",
       "useCases": "AI applications, text, text (reasoning) workloads",
       "whatItDoesTr": "API gateway with a free tier",
@@ -222,14 +238,14 @@
       "compatible": "Yes",
       "verification": "Account/API key",
       "privacy": "Check current provider terms",
-      "bestFor": "Text, Text (code), Text + Image, Text + Image + Video, Text + Image + Audio, Text / Image AI access",
+      "bestFor": "Text, Text (code), Text + Image + Video, Text + Image, Text + Image + Audio, Text + Image + Audio + Video, Text / Image AI access",
       "official": "https://openrouter.ai/keys",
       "docs": "https://openrouter.ai/api/v1",
-      "models": "nvidia/nemotron-3-super-120b-a12b:free; cohere/north-mini-code:free; google/gemma-4-26b-a4b-it:free; google/gemma-4-31b-it:free; nvidia/nemotron-nano-9b-v2:free; nvidia/nemotron-nano-12b-v2-vl:free; poolside/laguna-s-2.1:free; poolside/laguna-xs-2.1:free; apodex/apodex-1.1-mini:free; inclusionai/ling-3.0-flash-sante:free; qwen/qwen3.8-27b:free; dots-studio/dots-3-note-preview:free; liquid/lfm-2.5-2.6b:free; nvidia/nemotron-3.5-lightning:free; thinkingmachines/inkling:free; nvidia/nemotron-3-ultra-550b-a55b:free; + 6 more free models",
+      "models": "nvidia/nemotron-3-super-120b-a12b:free; cohere/north-mini-code:free; google/gemma-4-26b-a4b-it:free; google/gemma-4-31b-it:free; nvidia/nemotron-nano-9b-v2:free; nvidia/nemotron-nano-12b-v2-vl:free; poolside/laguna-s-2.1:free; poolside/laguna-xs-2.1:free; apodex/apodex-1.1-mini:free; inclusionai/ling-3.0-flash-sante:free; qwen/qwen3.8-27b:free; dots-studio/dots-3-note-preview:free; liquid/lfm-2.5-2.6b:free; nvidia/nemotron-3.5-lightning:free; thinkingmachines/inkling:free; nvidia/nemotron-3-ultra-550b-a55b:free; recursive/flint-v1.0:free; xingchen-agi/xing4.0-29b-a4b:free; nvidia/nemotron-3.5-super-vl:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
       "whatItDoes": "17 free models (marked with `:free` suffix)",
-      "useCases": "AI applications, text, text (code), text + image, text + image + video, text + image + audio, text / image workloads",
+      "useCases": "AI applications, text, text (code), text + image + video, text + image, text + image + audio, text + image + audio + video, text / image workloads",
       "whatItDoesTr": "17 free models (marked with `:free` suffix)",
-      "useCasesTr": "AI applications, text, text (code), text + image, text + image + video, text + image + audio, text / image workloads"
+      "useCasesTr": "AI applications, text, text (code), text + image + video, text + image, text + image + audio, text + image + audio + video, text / image workloads"
     },
     {
       "provider": "OVHcloud AI Endpoints",
@@ -257,7 +273,7 @@
       "bestFor": "Text AI access",
       "official": "https://cloud.siliconflow.cn/account/ak",
       "docs": "https://api.siliconflow.cn/v1",
-      "models": "Qwen/Qwen3-8B",
+      "models": "tencent/Hunyuan-MT-7B; XingChenAGI/Xing4.0-29B",
       "whatItDoes": "Permanently free models, no credit card required",
       "useCases": "AI applications, text workloads",
       "whatItDoesTr": "Permanently free models, no credit card required",
