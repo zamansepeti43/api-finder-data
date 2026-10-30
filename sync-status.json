@@ -1,6 +1,7 @@
 {
-  "checkedAt": "2026-10-29T07:06:43.231Z",
-  "status": "unchanged",
-  "providerCount": 16,
-  "upstreamLastUpdated": "2026-10-25"
+  "checkedAt": "2026-10-30T07:07:34.979Z",
+  "status": "updated",
+  "providerCount": 15,
+  "upstreamLastUpdated": "2026-10-25",
+  "dataVersion": "2026.10.30-cbc8d8a8"
 }
