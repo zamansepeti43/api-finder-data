@@ -142,14 +142,14 @@
       "compatible": "Yes",
       "verification": "No card stated",
       "privacy": "Check current provider terms",
-      "bestFor": "Text, Multimodal, Text (code), Text + Vision, Text + Vision (moderation) AI access",
+      "bestFor": "Text, Multimodal, Text (code), Text + Vision AI access",
       "official": "https://app.kilo.ai/profile",
       "docs": "https://api.kilo.ai/api/gateway",
-      "models": "nvidia/nemotron-3-ultra-550b-a55b:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free; poolside/laguna-s-2.1:free; poolside/laguna-xs-2.1:free; cohere/north-mini-code:free; openrouter/free; nvidia/nemotron-3.5-lightning:free; liquid/lfm-2.5-2.6b:free; kilo-auto/free; dots-studio/dots-3-note-preview:free; recursive/flint-v1.0:free; xingchen-agi/xing4.0-29b-a4b:free; nvidia/nemotron-3.5-super-vl:free; reflection/beam-free; stealth/glyph-cluster; nvidia/nemotron-3.5-content-safety:free",
+      "models": "nvidia/nemotron-3-ultra-550b-a55b:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free; cohere/north-mini-code:free; openrouter/free; nvidia/nemotron-3.5-lightning:free; liquid/lfm-2.5-2.6b:free; kilo-auto/free; dots-studio/dots-3-note-preview:free; recursive/flint-v1.0:free; xingchen-agi/xing4.0-29b-a4b:free; nvidia/nemotron-3.5-super-vl:free; reflection/beam-free; stealth/glyph-cluster",
       "whatItDoes": "Free models with no credit card and no API key required",
-      "useCases": "AI applications, text, multimodal, text (code), text + vision, text + vision (moderation) workloads",
+      "useCases": "AI applications, text, multimodal, text (code), text + vision workloads",
       "whatItDoesTr": "Free models with no credit card and no API key required",
-      "useCasesTr": "AI applications, text, multimodal, text (code), text + vision, text + vision (moderation) workloads"
+      "useCasesTr": "AI applications, text, multimodal, text (code), text + vision workloads"
     },
     {
       "provider": "LLM7.io",
@@ -161,7 +161,7 @@
       "bestFor": "Text, Text (reasoning) AI access",
       "official": "https://token.llm7.io",
       "docs": "https://api.llm7.io/v1",
-      "models": "gpt-oss:20b; mistral-Nemo-Instruct-2407; minimax-m2.7; nemotron-3-nano:30b; codestral-latest",
+      "models": "gpt-oss:20b; mistral-Nemo-Instruct-2407; nemotron-3-nano:30b; codestral-latest",
       "whatItDoes": "API gateway with a free tier",
       "useCases": "AI applications, text, text (reasoning) workloads",
       "whatItDoesTr": "API gateway with a free tier",
@@ -206,14 +206,14 @@
       "compatible": "Yes",
       "verification": "Account/API key",
       "privacy": "Check current provider terms",
-      "bestFor": "Text (code), Text + Image + Video, Text + Image, Text, Text + Image + Audio, Text + Image + Audio + Video, Text + Image (moderation) AI access",
+      "bestFor": "Text (code), Text + Image + Video, Text + Image, Text, Text + Image + Audio, Text + Image + Audio + Video AI access",
       "official": "https://openrouter.ai/keys",
       "docs": "https://openrouter.ai/api/v1",
-      "models": "cohere/north-mini-code:free; google/gemma-4-26b-a4b-it:free; google/gemma-4-31b-it:free; poolside/laguna-s-2.1:free; poolside/laguna-xs-2.1:free; dots-studio/dots-3-note-preview:free; liquid/lfm-2.5-2.6b:free; nvidia/nemotron-3.5-lightning:free; thinkingmachines/inkling:free; nvidia/nemotron-3-ultra-550b-a55b:free; recursive/flint-v1.0:free; xingchen-agi/xing4.0-29b-a4b:free; nvidia/nemotron-3.5-super-vl:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free; thinkingmachines/inkling-small:free; nvidia/nemotron-3.5-content-safety:free",
+      "models": "cohere/north-mini-code:free; google/gemma-4-26b-a4b-it:free; google/gemma-4-31b-it:free; dots-studio/dots-3-note-preview:free; liquid/lfm-2.5-2.6b:free; nvidia/nemotron-3.5-lightning:free; thinkingmachines/inkling:free; nvidia/nemotron-3-ultra-550b-a55b:free; recursive/flint-v1.0:free; xingchen-agi/xing4.0-29b-a4b:free; nvidia/nemotron-3.5-super-vl:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free; thinkingmachines/inkling-small:free",
       "whatItDoes": "17 free models (marked with `:free` suffix)",
-      "useCases": "AI applications, text (code), text + image + video, text + image, text, text + image + audio, text + image + audio + video, text + image (moderation) workloads",
+      "useCases": "AI applications, text (code), text + image + video, text + image, text, text + image + audio, text + image + audio + video workloads",
       "whatItDoesTr": "17 free models (marked with `:free` suffix)",
-      "useCasesTr": "AI applications, text (code), text + image + video, text + image, text, text + image + audio, text + image + audio + video, text + image (moderation) workloads"
+      "useCasesTr": "AI applications, text (code), text + image + video, text + image, text, text + image + audio, text + image + audio + video workloads"
     },
     {
       "provider": "OVHcloud AI Endpoints",
