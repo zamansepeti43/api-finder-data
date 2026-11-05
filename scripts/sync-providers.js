@@ -29,51 +29,148 @@ function keyOf(name) {
   return aliases[key] || key;
 }
 
+const MODALITY_TR = {
+  text: 'Metin yapay zekâsı',
+  vision: 'Görsel anlama',
+  image: 'Görsel üretimi',
+  audio: 'Ses işlemleri',
+  embeddings: 'Metin vektörleme',
+  rerank: 'Sonuç sıralama',
+  ocr: 'Belge ve yazı okuma',
+  video: 'Video analizi',
+  translation: 'Çeviri'
+};
+
+const PURPOSE_TR = {
+  'AI Horde': 'Topluluk destekli metin ve görsel üretimi',
+  'AI21 Labs': 'Jamba dil modelleriyle metin üretimi',
+  'Aion Labs': 'Metin üretimi ve rol yapma modelleri',
+  'Alibaba Cloud (Model Studio)': 'Qwen modelleriyle metin ve görsel anlama',
+  'Arli AI': 'Metin üretimi ve test amaçlı dil modelleri',
+  'AssemblyAI': 'Konuşmayı yazıya çevirme ve dil modeli erişimi',
+  'Baseten': 'Yapay zekâ modellerini API üzerinden çalıştırma',
+  'Camb.ai': 'Seslendirme, dublaj ve konuşma çevirisi',
+  'Cartesia': 'Gerçek zamanlı metin-ses dönüştürme',
+  'Cerebras': 'Hızlı dil modeli çıkarımı',
+  'Cloudflare Workers AI': 'Metin, görsel ve ses yapay zekâ modelleri',
+  'Cohere': 'Metin üretimi, vektörleme ve arama sıralama',
+  'Contextual AI': 'Belge tabanlı yanıt ve arama sıralama',
+  'Datalab (Marker / Surya)': 'PDF ve belgelerden metin çıkarma',
+  'Deepgram': 'Konuşmayı yazıya ve metni sese dönüştürme',
+  'ElevenLabs': 'Yapay zekâ seslendirme ve konuşma tanıma',
+  'Fireworks AI': 'Açık kaynak dil modelleriyle metin üretimi',
+  'Fish Audio': 'Yapay zekâ seslendirme',
+  'Gladia': 'Ses ve konuşma tanıma',
+  'Gonka Broker': 'Dağıtık altyapıda dil modeli API erişimi',
+  'Google Gemini API (AI Studio)': 'Gemini ile metin, görsel ve çoklu ortam işlemleri',
+  'Groq': 'Hızlı dil modeli ve ses API erişimi',
+  'Hume AI (Octave TTS)': 'Duygulu yapay zekâ seslendirme',
+  'IBM watsonx.ai (Lite plan)': 'Dil modeli ve belge işleme',
+  'Jina AI': 'Metin vektörleme ve arama sıralama',
+  'Kilo Code': 'Kod ve metin üretimi için model yönlendirme',
+  'LlamaParse (LlamaCloud)': 'PDF ve belgeleri yapay zekâya uygun metne çevirme',
+  'LLM7.io': 'Tek API üzerinden dil modeli erişimi',
+  'Mistral (La Plateforme)': 'Mistral dil modelleriyle metin üretimi',
+  'Mixedbread': 'Metin vektörleme ve akıllı arama',
+  'Modal': 'Yapay zekâ modellerini bulutta çalıştırma',
+  'ModelScope (API-Inference)': 'Açık kaynak yapay zekâ modellerine API erişimi',
+  'Moondream Cloud': 'Görselleri anlama ve analiz etme',
+  'Nanonets': 'Belge okuma ve veri çıkarma',
+  'Nebius AI Studio': 'Bulut üzerinden dil modeli çalıştırma',
+  'NLP Cloud': 'Metin işleme ve dil modeli API erişimi',
+  'Novita AI': 'Dil ve görsel yapay zekâ modelleri',
+  'Nutrient (Data Extraction API)': 'Belgelerden metin ve veri çıkarma',
+  'NVIDIA NIM': 'NVIDIA yapay zekâ modellerine API erişimi',
+  'OCR.space': 'Görsel ve PDF dosyalarından yazı okuma',
+  'Ollama Cloud': 'Bulutta açık kaynak dil modelleri çalıştırma',
+  'OpenRouter': 'Tek API ile birçok yapay zekâ modeline erişim',
+  'OVHcloud AI Endpoints': 'Metin, görsel ve ses modelleri',
+  'Photoroom': 'Görsel düzenleme ve arka plan silme',
+  'Pinecone Inference': 'Metin vektörleme ve anlamsal arama',
+  'Pollinations.ai': 'Metin, görsel, ses ve video üretimi',
+  'Poolside': 'Kod üretimi için dil modelleri',
+  'Retell AI': 'Yapay zekâ telefon ve sesli asistanları',
+  'Rev AI': 'Ses kayıtlarını yazıya çevirme',
+  'Rime': 'Yapay zekâ metin seslendirme',
+  'Runware': 'Görsel, video ve ses üretimi',
+  'SambaNova Cloud': 'Hızlı dil modeli API erişimi',
+  'Sarvam AI': 'Metin, konuşma ve çeviri işlemleri',
+  'Scaleway Generative APIs': 'Metin ve ses yapay zekâ API erişimi',
+  'SiliconFlow': 'Açık kaynak dil ve görsel modelleri',
+  'Smallest.ai (Waves)': 'Seslendirme, konuşma tanıma ve sesli asistan',
+  'Speechify API': 'Metni doğal sese dönüştürme',
+  'Speechmatics': 'Konuşmayı yazıya ve metni sese dönüştürme',
+  'Tencent Hunyuan': 'Metin ve görsel anlayan dil modelleri',
+  'Twelve Labs (Marengo Embed)': 'Video ve ses içeriğini analiz etme',
+  'Typhoon (SCB 10X)': 'Tayca ve çok dilli dil modelleri',
+  'Unreal Speech': 'Metni sese dönüştürme',
+  'Unstructured': 'PDF ve belgeleri ayrıştırma',
+  'Upstage': 'Dil modeli, OCR ve belge analizi',
+  'Vercel AI Gateway': 'Tek noktadan farklı dil modellerine erişim',
+  'Veryfi': 'Fatura ve fişlerden veri çıkarma',
+  'Voicegain': 'Konuşmayı yazıya dönüştürme',
+  'Voyage AI': 'Metin vektörleme ve anlamsal arama',
+  'W&B Inference': 'Dil modellerini API üzerinden çalıştırma',
+  'Z.ai (Zhipu AI / GLM)': 'GLM dil ve görsel modelleri'
+};
+
+function shortTurkish(p, modalities, category) {
+  const purpose = PURPOSE_TR[p.name] || 'Yapay zekâ API hizmeti';
+  const freeNote = category === 'Trial Credits'
+    ? 'Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.'
+    : 'Ücretsiz kullanım kotası sunulur.';
+  const modalityText = modalities.map(m => MODALITY_TR[m] || m).filter(Boolean).slice(0, 3).join(', ');
+  return {
+    purpose,
+    summary: `${purpose}. ${freeNote} Kota ve koşullar sağlayıcıya göre değişir.`,
+    whatItDoesTr: `${purpose}. ${freeNote}`,
+    useCasesTr: modalityText || purpose
+  };
+}
+
 function fromCurated(p) {
   const modalities = Array.isArray(p.modalities) ? p.modalities : [];
-  const verifiedAt = p.last_verified || 'not stated';
-  const card = p.card_required === true ? 'Yes' : p.card_required === false ? 'No' : 'Not confirmed';
-  const phone = p.phone_required === true ? 'Yes' : p.phone_required === false ? 'No' : 'Not confirmed';
-  const policy = p.data_policy
-    ? [p.data_policy.note, p.data_policy.retention && `Retention: ${p.data_policy.retention}`].filter(Boolean).join(' ')
-    : (p.notes || 'Check current provider terms');
-  const modelList = Array.isArray(p.models_free) ? p.models_free.filter(Boolean).slice(0, 30).join('; ') : '';
-  const freeText = [p.free_tier, p.rate_limits && `Limits: ${p.rate_limits}`, p.notes].filter(Boolean).join(' ');
-  const trModalities = { text: 'Metin', vision: 'Görsel anlama', image: 'Görsel üretimi', audio: 'Ses', embeddings: 'Vektör/embedding', rerank: 'Sıralama', ocr: 'OCR/belge okuma' };
+  const category = p.category === 'trial' ? 'Deneme Kredisi' : 'Ücretsiz';
+  const tr = shortTurkish(p, modalities, p.category === 'trial' ? 'Trial Credits' : 'Free Provider');
+  const modelList = Array.isArray(p.models_free) ? p.models_free.filter(Boolean).slice(0, 12).join('; ') : '';
   return {
     provider: p.name,
-    category: p.category === 'trial' ? 'Trial Credits' : 'Free Provider',
-    summary: freeText || 'Free or trial API access listed in the source dataset.',
-    compatible: p.openai_compatible === true ? 'Yes' : p.openai_compatible === false ? 'No' : 'Varies',
-    verification: `Official docs verified: ${verifiedAt}; card: ${card}; phone: ${phone}`,
-    privacy: policy,
-    bestFor: p.best_for || (modalities.length ? modalities.join(', ') : 'AI API access'),
+    category,
+    summary: tr.summary,
+    compatible: p.openai_compatible === true ? 'Evet' : p.openai_compatible === false ? 'Hayır' : 'Değişken',
+    verification: p.verified === true ? 'Kaynakta doğrulanmış' : 'Doğrulama bekliyor',
+    privacy: 'Veri saklama ve eğitim koşullarını kullanmadan önce sağlayıcının gizlilik politikasından kontrol edin.',
+    bestFor: tr.purpose,
     official: p.docs_url || '',
     docs: p.openai_base_url || p.docs_url || '',
-    models: modelList || 'See provider documentation',
-    whatItDoes: p.free_tier || 'Free or trial AI API access; check provider documentation.',
-    useCases: modalities.join(', ') || 'AI API',
-    whatItDoesTr: `Ücretsiz/deneme erişimi: ${p.free_tier || 'Ayrıntılar için resmî dokümantasyona bakın.'}`,
-    useCasesTr: modalities.map(m => trModalities[m] || m).join(', ') || 'Yapay zekâ API'
+    models: modelList || 'Modeller için resmî siteye bakın',
+    whatItDoes: tr.purpose,
+    useCases: tr.useCasesTr,
+    whatItDoesTr: tr.whatItDoesTr,
+    useCasesTr: tr.useCasesTr
   };
 }
 
 function fromUpstream(p) {
-  const description = String(p.description || '').trim();
   const models = (p.models || []).map(m => m && m.name).filter(Boolean);
-  const modality = [...new Set((p.models || []).map(m => m && m.modality).filter(Boolean))].join(', ');
-  const category = /trial|credit|credits|signup.*credit/i.test(description) ? 'Trial Credits' : 'Free Provider';
-  const compatible = /not.*openai|not.*compatible|ollama api/i.test(description) ? 'Varies' : 'Yes';
-  const verification = 'Secondary community dataset; official terms not independently re-verified here';
-  const privacy = /train|training|data.*improv|prompt.*log|log.*prompt/i.test(description) ? description : 'Check current provider terms';
-  const bestFor = modality ? `${modality} AI access` : 'AI API access';
-  const whatItDoes = description.split('. ')[0] || `Access ${p.name || 'AI'} models through an API.`;
-  const useCases = modality ? `AI applications, ${modality.toLowerCase()} workloads` : 'AI applications, prototyping, automation';
+  const modalityRaw = [...new Set((p.models || []).map(m => m && m.modality).filter(Boolean))];
+  const category = /trial|credit|credits|signup.*credit/i.test(String(p.description || '')) ? 'Deneme Kredisi' : 'Ücretsiz';
+  const tr = shortTurkish({ name: p.name }, modalityRaw, category === 'Deneme Kredisi' ? 'Trial Credits' : 'Free Provider');
   return {
-    provider: p.name, category, summary: description || 'Provider data available in the upstream directory.',
-    compatible, verification, privacy, bestFor, official: p.url || '', docs: p.baseUrl || p.url || '',
-    models: models.slice(0, 20).join('; ') || 'Various models',
-    whatItDoes, useCases, whatItDoesTr: whatItDoes, useCasesTr: useCases
+    provider: p.name,
+    category,
+    summary: tr.summary,
+    compatible: 'Değişken',
+    verification: 'İkinci kaynak listesinde yer alıyor; güncel koşulları resmî siteden kontrol edin',
+    privacy: 'Veri saklama ve eğitim koşullarını kullanmadan önce sağlayıcının gizlilik politikasından kontrol edin.',
+    bestFor: tr.purpose,
+    official: p.url || '',
+    docs: p.baseUrl || p.url || '',
+    models: models.slice(0, 12).join('; ') || 'Modeller için resmî siteye bakın',
+    whatItDoes: tr.purpose,
+    useCases: tr.useCasesTr,
+    whatItDoesTr: tr.whatItDoesTr,
+    useCasesTr: tr.useCasesTr
   };
 }
 
