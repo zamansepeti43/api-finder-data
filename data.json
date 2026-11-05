@@ -57,9 +57,9 @@
       "docs": "https://api.aionlabs.ai/v1",
       "models": "aion-labs/aion-2.0; aion-labs/aion-rp-llama-3.1-8b; aion-labs/aion-3.0; aion-labs/aion-3.0-mini",
       "whatItDoes": "Metin üretimi ve rol yapma modelleri",
-      "useCases": "Text (reasoning), Text",
+      "useCases": "Metin yapay zekâsı",
       "whatItDoesTr": "Metin üretimi ve rol yapma modelleri. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.",
-      "useCasesTr": "Text (reasoning), Text"
+      "useCasesTr": "Metin yapay zekâsı"
     },
     {
       "provider": "Alibaba Cloud (Model Studio)",
@@ -329,9 +329,9 @@
       "docs": "https://proxy.gonkabroker.com/v1",
       "models": "MiniMaxAI/MiniMax-M2.7; deepseek-ai/DeepSeek-V4-Flash-0731; zai-org/GLM-5.3-Flash; BAAI/bge-m3",
       "whatItDoes": "Dağıtık altyapıda dil modeli API erişimi",
-      "useCases": "Text (reasoning), Embeddings",
+      "useCases": "Metin yapay zekâsı, Metin vektörleme",
       "whatItDoesTr": "Dağıtık altyapıda dil modeli API erişimi. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.",
-      "useCasesTr": "Text (reasoning), Embeddings"
+      "useCasesTr": "Metin yapay zekâsı, Metin vektörleme"
     },
     {
       "provider": "Google Gemini API (AI Studio)",
@@ -425,9 +425,9 @@
       "docs": "https://api.kilo.ai/api/gateway",
       "models": "nvidia/nemotron-3-ultra-550b-a55b:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free; cohere/north-mini-code:free; openrouter/free; nvidia/nemotron-3.5-lightning:free; kilo-auto/free; dots-studio/dots-3-note-preview:free; nvidia/nemotron-3.5-super-vl:free; reflection/beam-free; stealth/glyph-cluster",
       "whatItDoes": "Kod ve metin üretimi için model yönlendirme",
-      "useCases": "Text, Multimodal, Text (code)",
+      "useCases": "Metin yapay zekâsı",
       "whatItDoesTr": "Kod ve metin üretimi için model yönlendirme. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.",
-      "useCasesTr": "Text, Multimodal, Text (code)"
+      "useCasesTr": "Metin yapay zekâsı"
     },
     {
       "provider": "LlamaParse (LlamaCloud)",
@@ -457,9 +457,9 @@
       "docs": "https://api.llm7.io/v1",
       "models": "gpt-oss:20b; mistral-Nemo-Instruct-2407; nemotron-3-nano:30b; codestral-latest",
       "whatItDoes": "Tek API üzerinden dil modeli erişimi",
-      "useCases": "Text, Text (reasoning)",
+      "useCases": "Metin yapay zekâsı",
       "whatItDoesTr": "Tek API üzerinden dil modeli erişimi. Ücretsiz kullanım kotası sunulur.",
-      "useCasesTr": "Text, Text (reasoning)"
+      "useCasesTr": "Metin yapay zekâsı"
     },
     {
       "provider": "Mistral (La Plateforme)",
