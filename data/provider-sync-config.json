@@ -1,0 +1,10 @@
+{
+  "enabled": true,
+  "purpose": "Keep API Finder Pro provider data in sync with maintained free/trial API datasets.",
+  "sources": [
+    "https://github.com/pacocartones/free-llm-api-hub",
+    "https://github.com/mnfst/awesome-free-llm-apis"
+  ],
+  "mergePolicy": "Verified entries with official documentation only; deduplicate provider aliases; preserve existing app data schema.",
+  "schedule": "Daily at 07:15 Europe/Istanbul"
+}
