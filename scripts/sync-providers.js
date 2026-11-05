@@ -115,11 +115,24 @@ const PURPOSE_TR = {
 };
 
 function shortTurkish(p, modalities, category) {
+  const normalizedModalities = modalities.map(m => {
+    const value = String(m || '').toLowerCase();
+    if (value.includes('text')) return 'text';
+    if (value.includes('vision')) return 'vision';
+    if (value.includes('image')) return 'image';
+    if (value.includes('audio') || value.includes('speech') || value.includes('tts') || value.includes('stt')) return 'audio';
+    if (value.includes('embed')) return 'embeddings';
+    if (value.includes('rerank')) return 'rerank';
+    if (value.includes('ocr') || value.includes('document')) return 'ocr';
+    if (value.includes('video')) return 'video';
+    if (value.includes('translat')) return 'translation';
+    return null;
+  }).filter(Boolean);
   const purpose = PURPOSE_TR[p.name] || 'Yapay zekâ API hizmeti';
   const freeNote = category === 'Trial Credits'
     ? 'Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.'
     : 'Ücretsiz kullanım kotası sunulur.';
-  const modalityText = modalities.map(m => MODALITY_TR[m] || m).filter(Boolean).slice(0, 3).join(', ');
+  const modalityText = [...new Set(normalizedModalities)].map(m => MODALITY_TR[m]).filter(Boolean).slice(0, 3).join(', ');
   return {
     purpose,
     summary: `${purpose}. ${freeNote} Kota ve koşullar sağlayıcıya göre değişir.`,
@@ -130,8 +143,10 @@ function shortTurkish(p, modalities, category) {
 
 function fromCurated(p) {
   const modalities = Array.isArray(p.modalities) ? p.modalities : [];
-  const category = p.category === 'trial' ? 'Deneme Kredisi' : 'Ücretsiz';
-  const tr = shortTurkish(p, modalities, p.category === 'trial' ? 'Trial Credits' : 'Free Provider');
+  const freeText = String(p.free_tier || '').toLowerCase();
+  const isOngoingFree = /permanent free|free plan \(\$0\)|permanently free|free forever|free tier.*permanent/.test(freeText);
+  const category = p.category === 'trial' && !isOngoingFree ? 'Deneme Kredisi' : 'Ücretsiz';
+  const tr = shortTurkish(p, modalities, category === 'Deneme Kredisi' ? 'Trial Credits' : 'Free Provider');
   const modelList = Array.isArray(p.models_free) ? p.models_free.filter(Boolean).slice(0, 12).join('; ') : '';
   return {
     provider: p.name,
