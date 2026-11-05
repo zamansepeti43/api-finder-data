@@ -29,6 +29,8 @@ function keyOf(name) {
   return aliases[key] || key;
 }
 
+const MODALITY_EN = { text: 'Text AI', vision: 'Image understanding', image: 'Image generation', audio: 'Audio', embeddings: 'Embeddings', rerank: 'Reranking', ocr: 'Document OCR', video: 'Video analysis', translation: 'Translation' };
+
 const MODALITY_TR = {
   text: 'Metin yapay zekâsı',
   vision: 'Görsel anlama',
@@ -135,7 +137,7 @@ function shortTurkish(p, modalities, category) {
   const modalityText = [...new Set(normalizedModalities)].map(m => MODALITY_TR[m]).filter(Boolean).slice(0, 3).join(', ');
   return {
     purpose,
-    summary: `${purpose}. ${freeNote} Kota ve koşullar sağlayıcıya göre değişir.`,
+    summaryTr: `${purpose}. ${freeNote} Kota ve koşullar sağlayıcıya göre değişir.`,
     whatItDoesTr: `${purpose}. ${freeNote}`,
     useCasesTr: modalityText || purpose
   };
@@ -150,17 +152,23 @@ function fromCurated(p) {
   const modelList = Array.isArray(p.models_free) ? p.models_free.filter(Boolean).slice(0, 12).join('; ') : '';
   return {
     provider: p.name,
-    category,
-    summary: tr.summary,
-    compatible: p.openai_compatible === true ? 'Evet' : p.openai_compatible === false ? 'Hayır' : 'Değişken',
-    verification: p.verified === true ? 'Kaynakta doğrulanmış' : 'Doğrulama bekliyor',
-    privacy: 'Veri saklama ve eğitim koşullarını kullanmadan önce sağlayıcının gizlilik politikasından kontrol edin.',
-    bestFor: tr.purpose,
+    category: category === 'Deneme Kredisi' ? 'Trial Credits' : 'Free Provider',
+    categoryTr: category,
+    summary: String(p.free_tier || p.best_for || tr.purpose).slice(0, 220),
+    summaryTr: tr.summaryTr,
+    compatible: p.openai_compatible === true ? 'Yes' : p.openai_compatible === false ? 'No' : 'Varies',
+    compatibleTr: p.openai_compatible === true ? 'Evet' : p.openai_compatible === false ? 'Hayır' : 'Değişken',
+    verification: p.verified === true ? 'Verified in source' : 'Verification pending',
+    verificationTr: p.verified === true ? 'Kaynakta doğrulanmış' : 'Doğrulama bekliyor',
+    privacy: 'Check the provider privacy policy for data retention and model-training terms.',
+    privacyTr: 'Veri saklama ve model eğitimi koşullarını sağlayıcının gizlilik politikasından kontrol edin.',
+    bestFor: p.best_for || tr.purpose,
+    bestForTr: tr.purpose,
     official: p.docs_url || '',
     docs: p.openai_base_url || p.docs_url || '',
     models: modelList || 'Modeller için resmî siteye bakın',
-    whatItDoes: tr.purpose,
-    useCases: tr.useCasesTr,
+    whatItDoes: String(p.free_tier || p.best_for || p.name).slice(0, 220),
+    useCases: modalities.map(m => MODALITY_EN[m] || m).slice(0, 3).join(', ') || 'AI applications',
     whatItDoesTr: tr.whatItDoesTr,
     useCasesTr: tr.useCasesTr
   };
@@ -169,21 +177,28 @@ function fromCurated(p) {
 function fromUpstream(p) {
   const models = (p.models || []).map(m => m && m.name).filter(Boolean);
   const modalityRaw = [...new Set((p.models || []).map(m => m && m.modality).filter(Boolean))];
-  const category = /trial|credit|credits|signup.*credit/i.test(String(p.description || '')) ? 'Deneme Kredisi' : 'Ücretsiz';
-  const tr = shortTurkish({ name: p.name }, modalityRaw, category === 'Deneme Kredisi' ? 'Trial Credits' : 'Free Provider');
+  const isTrial = /trial|credit|credits|signup.*credit/i.test(String(p.description || ''));
+  const category = isTrial ? 'Trial Credits' : 'Free Provider';
+  const tr = shortTurkish({ name: p.name }, modalityRaw, category);
   return {
     provider: p.name,
     category,
-    summary: tr.summary,
-    compatible: 'Değişken',
-    verification: 'İkinci kaynak listesinde yer alıyor; güncel koşulları resmî siteden kontrol edin',
-    privacy: 'Veri saklama ve eğitim koşullarını kullanmadan önce sağlayıcının gizlilik politikasından kontrol edin.',
+    categoryTr: isTrial ? 'Deneme Kredisi' : 'Ücretsiz',
+    summary: String(p.description || p.name).split('. ')[0].slice(0, 220),
+    summaryTr: tr.summaryTr,
+    compatible: 'Varies',
+    compatibleTr: 'Değişken',
+    verification: 'Listed in secondary community dataset; verify current terms on the official site',
+    verificationTr: 'İkinci topluluk kaynağında listeleniyor; güncel koşulları resmî siteden kontrol edin',
+    privacy: 'Check the provider privacy policy for data retention and model-training terms.',
+    privacyTr: 'Veri saklama ve model eğitimi koşullarını sağlayıcının gizlilik politikasından kontrol edin.',
     bestFor: tr.purpose,
+    bestForTr: tr.purpose,
     official: p.url || '',
     docs: p.baseUrl || p.url || '',
     models: models.slice(0, 12).join('; ') || 'Modeller için resmî siteye bakın',
-    whatItDoes: tr.purpose,
-    useCases: tr.useCasesTr,
+    whatItDoes: String(p.description || p.name).split('. ')[0].slice(0, 220),
+    useCases: modalityRaw.map(m => MODALITY_EN[String(m).toLowerCase()] || m).slice(0, 3).join(', ') || 'AI applications',
     whatItDoesTr: tr.whatItDoesTr,
     useCasesTr: tr.useCasesTr
   };
