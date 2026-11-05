@@ -64,7 +64,7 @@ function fromUpstream(p) {
   const modality = [...new Set((p.models || []).map(m => m && m.modality).filter(Boolean))].join(', ');
   const category = /trial|credit|credits|signup.*credit/i.test(description) ? 'Trial Credits' : 'Free Provider';
   const compatible = /not.*openai|not.*compatible|ollama api/i.test(description) ? 'Varies' : 'Yes';
-  const verification = /no credit card|required.*card|without.*card/i.test(description) ? 'No card stated' : 'Account/API key';
+  const verification = 'Secondary community dataset; official terms not independently re-verified here';
   const privacy = /train|training|data.*improv|prompt.*log|log.*prompt/i.test(description) ? description : 'Check current provider terms';
   const bestFor = modality ? `${modality} AI access` : 'AI API access';
   const whatItDoes = description.split('. ')[0] || `Access ${p.name || 'AI'} models through an API.`;
@@ -81,7 +81,7 @@ async function main() {
   const [curated, upstream] = await Promise.all([readJson(SOURCES.curated), readJson(SOURCES.upstream)]);
   const records = new Map();
   for (const p of (curated.providers || [])) {
-    if (p.verified !== true || !p.docs_url) continue;
+    if (p.verified !== true || !p.docs_url || p.slug === 'huggingface') continue;
     records.set(keyOf(p.name), fromCurated(p));
   }
   for (const p of (upstream.providers || [])) {
