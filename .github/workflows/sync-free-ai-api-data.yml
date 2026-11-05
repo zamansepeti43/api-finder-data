@@ -16,100 +16,13 @@ jobs:
       - name: Checkout data repository
         uses: actions/checkout@v4
 
-      - name: Fetch and normalize upstream data
-        env:
-          SOURCE_URL: https://raw.githubusercontent.com/mnfst/awesome-free-llm-apis/main/data.json
-        run: |
-          node <<'NODE'
-          const fs = require('fs');
-          const https = require('https');
-          const crypto = require('crypto');
+      - name: Fetch and merge continuously maintained provider datasets
+        uses: actions/setup-node@v4
+        with:
+          node-version: '22'
 
-          const source = process.env.SOURCE_URL;
-          https.get(source, { headers: { 'User-Agent': 'AGT-Studioco-API-Finder-Sync/1.0' } }, res => {
-            if (res.statusCode < 200 || res.statusCode >= 300) {
-              console.error(`Upstream HTTP ${res.statusCode}`);
-              process.exit(1);
-            }
-            let body = '';
-            res.on('data', c => body += c);
-            res.on('end', () => {
-              try {
-                const src = JSON.parse(body);
-                const providers = (src.providers || []).map(p => {
-                  const description = String(p.description || '').trim();
-                  const models = (p.models || []).map(m => m && m.name).filter(Boolean);
-                  const modality = [...new Set((p.models || []).map(m => m && m.modality).filter(Boolean))].join(', ');
-                  const category = /trial|credit|credits|signup.*credit/i.test(description) ? 'Trial Credits' : 'Free Provider';
-                  const compatible = /not.*openai|not.*compatible|ollama api/i.test(description) ? 'Varies' : 'Yes';
-                  const verification = /no credit card|required.*card|without.*card/i.test(description) ? 'No card stated' : 'Account/API key';
-                  const privacy = /train|training|data.*improv|prompt.*log|log.*prompt/i.test(description) ? description : 'Check current provider terms';
-                  const bestFor = modality ? `${modality} AI access` : 'AI API access';
-                  const whatItDoes = description.split('. ')[0] || `Access ${p.name || 'AI'} models through an API.`;
-                  const useCases = modality ? `AI applications, ${modality.toLowerCase()} workloads` : 'AI applications, prototyping, automation';
-                  return {
-                    provider: p.name,
-                    category,
-                    summary: description || 'Provider data available in the upstream directory.',
-                    compatible,
-                    verification,
-                    privacy,
-                    bestFor,
-                    official: p.url || '',
-                    docs: p.baseUrl || p.url || '',
-                    models: models.slice(0, 20).join('; ') || 'Various models',
-                    whatItDoes,
-                    useCases,
-                    whatItDoesTr: whatItDoes,
-                    useCasesTr: useCases
-                  };
-                }).filter(p => p.provider);
-
-                if (!providers.length) throw new Error('No providers returned by upstream source');
-
-                const data = {
-                  product: 'AGT Studio — API Finder Pro',
-                  edition: 'Premium',
-                  snapshotDate: src.lastUpdated || new Date().toISOString().slice(0,10),
-                  updatesIncluded: true,
-                  providerCount: providers.length,
-                  source: 'mnfst/awesome-free-llm-apis',
-                  sourceUrl: 'https://github.com/mnfst/awesome-free-llm-apis',
-                  providers
-                };
-                const nextData = JSON.stringify(data, null, 2) + '\n';
-                const oldData = fs.existsSync('data.json') ? fs.readFileSync('data.json', 'utf8') : '';
-                const checkedAt = new Date().toISOString();
-
-                if (oldData === nextData) {
-                  fs.writeFileSync('sync-status.json', JSON.stringify({checkedAt, status:'unchanged', providerCount:providers.length, upstreamLastUpdated:src.lastUpdated || null}, null, 2) + '\n');
-                  console.log('No upstream data change. Updated heartbeat status only.');
-                  process.exit(0);
-                }
-
-                const today = checkedAt.slice(0,10).replaceAll('-','.');
-                const dataHash = crypto.createHash('sha256').update(nextData).digest('hex').slice(0,8);
-                const version = `${today}-${dataHash}`;
-
-                fs.writeFileSync('data.json', nextData);
-                fs.writeFileSync('update-manifest.json', JSON.stringify({
-                  appVersion: '1.0.0',
-                  dataVersion: version,
-                  updatedAt: checkedAt,
-                  dataUrl: 'https://raw.githubusercontent.com/zamansepeti43/api-finder-data/main/data.json',
-                  source: 'mnfst/awesome-free-llm-apis',
-                  sourceUrl: 'https://github.com/mnfst/awesome-free-llm-apis',
-                  changelog: `Automatic provider-data sync. Upstream lastUpdated: ${src.lastUpdated || 'unknown'}. Provider count: ${providers.length}.`
-                }, null, 2) + '\n');
-                fs.writeFileSync('sync-status.json', JSON.stringify({checkedAt, status:'updated', providerCount:providers.length, upstreamLastUpdated:src.lastUpdated || null, dataVersion:version}, null, 2) + '\n');
-                console.log(`Published data version ${version}`);
-              } catch (e) {
-                console.error(e);
-                process.exit(1);
-              }
-            });
-          }).on('error', e => { console.error(e); process.exit(1); });
-          NODE
+      - name: Build the app-compatible provider feed
+        run: node scripts/sync-providers.js
 
       - name: Commit sync results
         run: |
@@ -120,5 +33,5 @@ jobs:
             echo 'Nothing changed.'
             exit 0
           fi
-          git commit -m "chore: automatic API data sync"
+          git commit -m "chore: sync verified free and trial API providers"
           git push
