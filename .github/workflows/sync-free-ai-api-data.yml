@@ -4,7 +4,6 @@ on:
   push:
     branches: [main]
     paths:
-      - 'data/**'
       - 'scripts/**'
       - '.github/workflows/sync-free-ai-api-data.yml'
   workflow_dispatch:
