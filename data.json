@@ -1,7 +1,7 @@
 {
   "product": "AGT Studio — API Finder Pro",
   "edition": "Premium",
-  "snapshotDate": "2026-11-11",
+  "snapshotDate": "2026-11-12",
   "updatesIncluded": true,
   "providerCount": 70,
   "source": "pacocartones/free-llm-api-hub + mnfst/awesome-free-llm-apis",
@@ -11,7 +11,7 @@
   },
   "sourceDatasetVersion": "2.11.0",
   "sourceDatasetGenerated": "2026-10-18",
-  "upstreamLastUpdated": "2026-10-25",
+  "upstreamLastUpdated": "2026-11-11",
   "providers": [
     {
       "provider": "AI Horde",
@@ -579,7 +579,7 @@
       "bestForTr": "Kod ve metin üretimi için model yönlendirme",
       "official": "https://app.kilo.ai/profile",
       "docs": "https://api.kilo.ai/api/gateway",
-      "models": "nvidia/nemotron-3-ultra-550b-a55b:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free; cohere/north-mini-code:free; openrouter/free; nvidia/nemotron-3.5-lightning:free; kilo-auto/free; dots-studio/dots-3-note-preview:free; nvidia/nemotron-3.5-super-vl:free; reflection/beam-free; stealth/glyph-cluster",
+      "models": "nvidia/nemotron-3-ultra-550b-a55b:free; nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free; cohere/north-mini-code:free; openrouter/free; nvidia/nemotron-3.5-lightning:free; kilo-auto/free; dots-studio/dots-3-note-preview:free; nvidia/nemotron-3.5-super-vl:free; stealth/glyph-cluster",
       "whatItDoes": "Free models with no credit card and no API key required",
       "useCases": "Text AI, Multimodal, Text (code)",
       "whatItDoesTr": "Kod ve metin üretimi için model yönlendirme. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.",
@@ -623,9 +623,9 @@
       "bestForTr": "Tek API üzerinden dil modeli erişimi",
       "official": "https://token.llm7.io",
       "docs": "https://api.llm7.io/v1",
-      "models": "gpt-oss:20b; mistral-Nemo-Instruct-2407; nemotron-3-nano:30b; codestral-latest",
+      "models": "gpt-oss:20b; mistral-Nemo-Instruct-2407; codestral-latest",
       "whatItDoes": "API gateway with a free tier",
-      "useCases": "Text AI, Text (reasoning)",
+      "useCases": "Text AI",
       "whatItDoesTr": "Tek API üzerinden dil modeli erişimi. Ücretsiz kullanım kotası sunulur.",
       "useCasesTr": "Metin yapay zekâsı"
     },
