@@ -1,5 +1,5 @@
 {
-  "checkedAt": "2026-11-12T08:20:24.317Z",
+  "checkedAt": "2026-11-13T07:58:45.147Z",
   "status": "updated",
   "providerCount": 70,
   "verifiedCuratedProviderCount": 67,
@@ -7,5 +7,5 @@
   "curatedDatasetVersion": "2.11.0",
   "curatedDatasetGenerated": "2026-10-18",
   "upstreamLastUpdated": "2026-11-11",
-  "dataVersion": "2026.11.12-354ccbb9"
+  "dataVersion": "2026.11.13-cc750754"
 }
