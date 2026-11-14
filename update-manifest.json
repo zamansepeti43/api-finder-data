@@ -1,12 +1,12 @@
 {
   "appVersion": "1.0.0",
-  "dataVersion": "2026.11.13-cc750754",
-  "updatedAt": "2026-11-13T07:58:45.147Z",
+  "dataVersion": "2026.11.14-70a91e56",
+  "updatedAt": "2026-11-14T07:36:50.936Z",
   "dataUrl": "https://raw.githubusercontent.com/zamansepeti43/api-finder-data/main/data.json",
   "source": "pacocartones/free-llm-api-hub + mnfst/awesome-free-llm-apis",
   "sourceUrls": {
     "curated": "https://raw.githubusercontent.com/pacocartones/free-llm-api-hub/main/data/providers.json",
     "upstream": "https://raw.githubusercontent.com/mnfst/awesome-free-llm-apis/main/data.json"
   },
-  "changelog": "Synced verified free/trial AI API providers from two community datasets. Provider count: 70. Curated dataset: 2.11.0 (2026-10-18); secondary upstream: 2026-11-11."
+  "changelog": "Synced verified free/trial AI API providers from two community datasets. Provider count: 69. Curated dataset: 2.11.0 (2026-11-13); secondary upstream: 2026-11-12."
 }

@@ -1,17 +1,17 @@
 {
   "product": "AGT Studio — API Finder Pro",
   "edition": "Premium",
-  "snapshotDate": "2026-11-13",
+  "snapshotDate": "2026-11-14",
   "updatesIncluded": true,
-  "providerCount": 70,
+  "providerCount": 69,
   "source": "pacocartones/free-llm-api-hub + mnfst/awesome-free-llm-apis",
   "sourceUrls": {
     "curated": "https://raw.githubusercontent.com/pacocartones/free-llm-api-hub/main/data/providers.json",
     "upstream": "https://raw.githubusercontent.com/mnfst/awesome-free-llm-apis/main/data.json"
   },
   "sourceDatasetVersion": "2.11.0",
-  "sourceDatasetGenerated": "2026-10-18",
-  "upstreamLastUpdated": "2026-11-11",
+  "sourceDatasetGenerated": "2026-11-13",
+  "upstreamLastUpdated": "2026-11-12",
   "providers": [
     {
       "provider": "AI Horde",
@@ -51,7 +51,7 @@
       "bestForTr": "Jamba dil modelleriyle metin üretimi",
       "official": "https://docs.ai21.com/docs/usage-cost",
       "docs": "https://api.ai21.com/studio/v1",
-      "models": "Modeller için resmî siteye bakın",
+      "models": "jamba-large; jamba-mini",
       "whatItDoes": "$10 trial credit, valid 3 months",
       "useCases": "Text AI",
       "whatItDoesTr": "Jamba dil modelleriyle metin üretimi. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.",
@@ -892,28 +892,6 @@
       "useCases": "Document OCR, Text AI",
       "whatItDoesTr": "Görsel ve PDF dosyalarından yazı okuma. Ücretsiz kullanım kotası sunulur.",
       "useCasesTr": "Belge ve yazı okuma, Metin yapay zekâsı"
-    },
-    {
-      "provider": "Ollama Cloud",
-      "category": "Free Provider",
-      "categoryTr": "Ücretsiz",
-      "summary": "$0 Free plan: starter amount of cloud usage credits, limited to a smaller set of starter models; buying credits unlocks all cloud models",
-      "summaryTr": "Bulutta açık kaynak dil modelleri çalıştırma. Ücretsiz kullanım kotası sunulur. Kota ve koşullar sağlayıcıya göre değişir.",
-      "compatible": "Yes",
-      "compatibleTr": "Evet",
-      "verification": "Verified in source",
-      "verificationTr": "Kaynakta doğrulanmış",
-      "privacy": "Check the provider privacy policy for data retention and model-training terms.",
-      "privacyTr": "Veri saklama ve model eğitimi koşullarını sağlayıcının gizlilik politikasından kontrol edin.",
-      "bestFor": "Cloud-hosted open models with the Ollama workflow",
-      "bestForTr": "Bulutta açık kaynak dil modelleri çalıştırma",
-      "official": "https://docs.ollama.com/cloud",
-      "docs": "https://ollama.com/v1",
-      "models": "Modeller için resmî siteye bakın",
-      "whatItDoes": "$0 Free plan: starter amount of cloud usage credits, limited to a smaller set of starter models; buying credits unlocks all cloud models",
-      "useCases": "Text AI, Image understanding",
-      "whatItDoesTr": "Bulutta açık kaynak dil modelleri çalıştırma. Ücretsiz kullanım kotası sunulur.",
-      "useCasesTr": "Metin yapay zekâsı, Görsel anlama"
     },
     {
       "provider": "OpenRouter",
