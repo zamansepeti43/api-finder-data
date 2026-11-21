@@ -1,7 +1,7 @@
 {
   "product": "AGT Studio — API Finder Pro",
   "edition": "Premium",
-  "snapshotDate": "2026-11-20",
+  "snapshotDate": "2026-11-21",
   "updatesIncluded": true,
   "providerCount": 66,
   "source": "pacocartones/free-llm-api-hub + mnfst/awesome-free-llm-apis",
@@ -9,7 +9,7 @@
     "curated": "https://raw.githubusercontent.com/pacocartones/free-llm-api-hub/main/data/providers.json",
     "upstream": "https://raw.githubusercontent.com/mnfst/awesome-free-llm-apis/main/data.json"
   },
-  "sourceDatasetVersion": "2.14.1",
+  "sourceDatasetVersion": "2.14.2",
   "sourceDatasetGenerated": "2026-11-20",
   "upstreamLastUpdated": "2026-11-15",
   "providers": [
