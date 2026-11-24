@@ -1,9 +1,9 @@
 {
   "product": "AGT Studio — API Finder Pro",
   "edition": "Premium",
-  "snapshotDate": "2026-11-23",
+  "snapshotDate": "2026-11-24",
   "updatesIncluded": true,
-  "providerCount": 66,
+  "providerCount": 67,
   "source": "pacocartones/free-llm-api-hub + mnfst/awesome-free-llm-apis",
   "sourceUrls": {
     "curated": "https://raw.githubusercontent.com/pacocartones/free-llm-api-hub/main/data/providers.json",
@@ -1024,6 +1024,28 @@
       "useCases": "Audio",
       "whatItDoesTr": "Yapay zekâ metin seslendirme. Ücretsiz kullanım kotası sunulur.",
       "useCasesTr": "Ses işlemleri"
+    },
+    {
+      "provider": "Runcrate",
+      "category": "Trial Credits",
+      "categoryTr": "Deneme Kredisi",
+      "summary": "Free usage on five open models with a GitHub sign-in, no credit card required (the no-card free usage applies to GitHub sign-ins only; a Google sign-up needs a card on file)",
+      "summaryTr": "Yapay zekâ API hizmeti. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur. Kota ve koşullar sağlayıcıya göre değişir.",
+      "compatible": "Varies",
+      "compatibleTr": "Değişken",
+      "verification": "Listed in secondary community dataset; verify current terms on the official site",
+      "verificationTr": "İkinci topluluk kaynağında listeleniyor; güncel koşulları resmî siteden kontrol edin",
+      "privacy": "Check the provider privacy policy for data retention and model-training terms.",
+      "privacyTr": "Veri saklama ve model eğitimi koşullarını sağlayıcının gizlilik politikasından kontrol edin.",
+      "bestFor": "Yapay zekâ API hizmeti",
+      "bestForTr": "Yapay zekâ API hizmeti",
+      "official": "https://www.runcrate.ai/dashboard/api-keys",
+      "docs": "https://api.runcrate.ai/v1",
+      "models": "deepseek-ai/DeepSeek-V4.1-Flash; zai-org/GLM-5.3-Flash; zai-org/GLM-5.3; Qwen/Qwen3.8-Flash; openai/gpt-oss-120b",
+      "whatItDoes": "Free usage on five open models with a GitHub sign-in, no credit card required (the no-card free usage applies to GitHub sign-ins only; a Google sign-up needs a card on file)",
+      "useCases": "Text + Image, Text (reasoning)",
+      "whatItDoesTr": "Yapay zekâ API hizmeti. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.",
+      "useCasesTr": "Metin yapay zekâsı"
     },
     {
       "provider": "Runware",
