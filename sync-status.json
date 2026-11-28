@@ -1,11 +1,11 @@
 {
-  "checkedAt": "2026-11-27T09:41:18.185Z",
+  "checkedAt": "2026-11-28T08:54:53.650Z",
   "status": "updated",
-  "providerCount": 97,
-  "verifiedCuratedProviderCount": 94,
+  "providerCount": 98,
+  "verifiedCuratedProviderCount": 95,
   "secondaryUpstreamProviderCount": 16,
   "curatedDatasetVersion": "2.14.2",
   "curatedDatasetGenerated": "2026-11-24",
   "upstreamLastUpdated": "2026-11-15",
-  "dataVersion": "2026.11.27-b8ecb236"
+  "dataVersion": "2026.11.28-ffb41f76"
 }

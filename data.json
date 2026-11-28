@@ -1,9 +1,9 @@
 {
   "product": "AGT Studio — API Finder Pro",
   "edition": "Premium",
-  "snapshotDate": "2026-11-27",
+  "snapshotDate": "2026-11-28",
   "updatesIncluded": true,
-  "providerCount": 97,
+  "providerCount": 98,
   "source": "pacocartones/free-llm-api-hub + mnfst/awesome-free-llm-apis",
   "sourceUrls": {
     "curated": "https://raw.githubusercontent.com/pacocartones/free-llm-api-hub/main/data/providers.json",
@@ -254,6 +254,28 @@
       "useCases": "Text AI",
       "whatItDoesTr": "Yapay zekâ API hizmeti. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.",
       "useCasesTr": "Metin yapay zekâsı"
+    },
+    {
+      "provider": "BytePlus ModelArk",
+      "category": "Trial Credits",
+      "categoryTr": "Deneme Kredisi",
+      "summary": "One-time free inference quota for new BytePlus users: 500,000 tokens per model, counted separately for each model and shared across the primary account, for online pay-as-you-go inference on ModelArk's Seed, DeepSeek, GL",
+      "summaryTr": "Yapay zekâ API hizmeti. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur. Kota ve koşullar sağlayıcıya göre değişir.",
+      "compatible": "Yes",
+      "compatibleTr": "Evet",
+      "verification": "Verified in source",
+      "verificationTr": "Kaynakta doğrulanmış",
+      "privacy": "Check the provider privacy policy for data retention and model-training terms.",
+      "privacyTr": "Veri saklama ve model eğitimi koşullarını sağlayıcının gizlilik politikasından kontrol edin.",
+      "bestFor": "Trying ByteDance's Seed models and other hosted open models through an OpenAI-compatible API without being billed",
+      "bestForTr": "Yapay zekâ API hizmeti",
+      "official": "https://ai.byteplus.com/ark/region:ap-southeast-1/docs/free-inference-quota",
+      "docs": "https://ark.ap-southeast.bytepluses.com/api/v3",
+      "models": "dola-seed-2-1-turbo-260628; seed-2-0-lite-260428; seed-2-0-mini-260428",
+      "whatItDoes": "One-time free inference quota for new BytePlus users: 500,000 tokens per model, counted separately for each model and shared across the primary account, for online pay-as-you-go inference on ModelArk's Seed, DeepSeek, GL",
+      "useCases": "Text AI, Image understanding",
+      "whatItDoesTr": "Yapay zekâ API hizmeti. Yeni hesaplara deneme erişimi veya başlangıç kredisi sunulur.",
+      "useCasesTr": "Metin yapay zekâsı, Görsel anlama"
     },
     {
       "provider": "Bytez",
